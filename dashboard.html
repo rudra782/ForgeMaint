@@ -1,0 +1,298 @@
+<!-- Styles -->
+  <style>
+    :root {
+      --primary: #2c3e50;
+      --secondary: #3498db;
+      --success: #2ecc71;
+      --warning: #f39c12;
+      --danger: #e74c3c;
+      --light: #ecf0f1;
+      --dark: #34495e;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; }
+    body { background-color: #f5f7fa; color: #333; }
+
+    .dashboard { display: grid; grid-template-columns: 250px 1fr; min-height: 100vh; }
+
+    /* Sidebar */
+    .sidebar {
+      background: var(--primary); color: white; padding: 20px 0;
+    }
+
+    .logo { text-align: center; padding: 0 20px 20px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .logo h2 { font-weight: 500; }
+    .logo span { color: var(--secondary); }
+
+    .nav-menu { margin-top: 30px; }
+    .nav-item {
+      padding: 15px 25px; display: flex; align-items: center; cursor: pointer;
+      transition: 0.3s ease;
+    }
+    .nav-item:hover, .nav-item.active {
+      background: rgba(255,255,255,0.1); border-left: 3px solid var(--secondary);
+    }
+    .nav-item i { margin-right: 10px; font-size: 18px; }
+
+    /* Main */
+    .main-content { padding: 20px; }
+
+    .header {
+      display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;
+    }
+    .search-bar {
+      display: flex; align-items: center; background: white; padding: 8px 15px;
+      border-radius: 30px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); width: 300px;
+    }
+    .search-bar input {
+      border: none; outline: none; padding: 5px; width: 100%;
+    }
+
+    .user-info {
+      display: flex; align-items: center;
+    }
+    .user-info img {
+      width: 40px; height: 40px; border-radius: 50%; margin-right: 10px;
+    }
+
+    /* Cards */
+    .cards {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px; margin-bottom: 30px;
+    }
+
+    .card {
+      background: white; border-radius: 10px; padding: 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: relative; overflow: hidden;
+    }
+    .card::before {
+      content: ''; position: absolute; top: 0; left: 0; width: 5px; height: 100%;
+    }
+    .card.health::before { background: var(--success); }
+    .card.warning::before { background: var(--warning); }
+    .card.critical::before { background: var(--danger); }
+
+    .card-info {
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .card-info h3 { font-size: 14px; color: #777; font-weight: 500; }
+    .card-info span { font-size: 24px; font-weight: 700; }
+
+    /* Charts */
+    .chart-container {
+      display: grid; grid-template-columns: 2fr 1fr; gap: 20px; margin-bottom: 30px;
+    }
+    .chart-card {
+      background: white; border-radius: 10px; padding: 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    .chart-card h3 { margin-bottom: 20px; font-weight: 500; }
+
+    @media (max-width: 768px) {
+      .dashboard { grid-template-columns: 1fr; }
+      .sidebar { display: none; }
+      .chart-container { grid-template-columns: 1fr; }
+      .header { flex-direction: column; gap: 15px; }
+      .search-bar { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartPredict | Predictive Maintenance Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="scripts/dashboard.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="styles/dashboard.css">
+    <link rel="stylesheet" href="styles/dashboard.css" />
+
+
+</head>
+<body>
+    <div class="dashboard">
+        <div class="sidebar">
+            <div class="logo">
+                <h2>Smart<span>Predict</span></h2>
+                <p>Predictive Maintenance</p>
+            </div>
+            <div class="nav-menu">
+                <div class="nav-item active">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </div>
+                <div class="nav-item">
+                    <a href="eq.html" style="color: inherit; text-decoration: none; display: flex; align-items: center;">
+                      <i class="fas fa-cog"></i>
+                      <span>Equipment</span>
+                    </a>
+                  </div>
+                  <div class="nav-item">
+                    <a href="alert.html" style="color: inherit; text-decoration: none; display: flex; align-items: center; width: 100%;">
+                      <i class="fas fa-cog"></i>
+                      <span>Alerts</span>
+                    </a>
+                  </div>
+                  <div class="nav-item">
+                    <a href="maintenance.html" style="color: inherit; text-decoration: none; display: flex; align-items: center; width: 100%;">
+                      <i class="fas fa-cog"></i>
+                      <span>Maintenance</span>
+                    </a>
+                  </div>
+   
+                <!-- <div class="nav-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Maintenance</span>
+                </div> -->
+                <div class="nav-item">
+                    <a href="report.html" style="color: inherit; text-decoration: none; display: flex; align-items: center; width: 100%;">
+                      <i class="fas fa-cog"></i>
+                      <span>Reports</span>
+                    </a>
+                  </div>
+
+                <div class="nav-item">
+                    <i class="fas fa-user-cog"></i>
+                    <span>Settings</span>
+                </div>
+            </div>
+        </div>
+        <div class="main-content">
+            <div class="header">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search equipment or sensor...">
+                </div>
+                <div class="user-info">
+                    <i class="fas fa-bell" style="margin-right: 20px; font-size: 18px;"></i>
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User">
+                    <span>John Doe</span>
+                </div>
+            </div>
+
+            <div class="cards">
+                <div class="card health">
+                    <div class="card-info">
+                        <div>
+                            <h3>Healthy Equipment</h3>
+                            <span>24</span>
+                        </div>
+                        <i class="fas fa-check-circle" style="font-size: 40px; color: var(--success);"></i>
+                    </div>
+                </div>
+                <div class="card warning">
+                    <div class="card-info">
+                        <div>
+                            <h3>Requires Attention</h3>
+                            <span>5</span>
+                        </div>
+                        <i class="fas fa-exclamation-triangle" style="font-size: 40px; color: var(--warning);"></i>
+                    </div>
+                </div>
+                <div class="card critical">
+                    <div class="card-info">
+                        <div>
+                            <h3>Critical Alerts</h3>
+                            <span>2</span>
+                        </div>
+                        <i class="fas fa-times-circle" style="font-size: 40px; color: var(--danger);"></i>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-info">
+                        <div>
+                            <h3>Predicted Failures</h3>
+                            <span>3</span>
+                        </div>
+                        <i class="fas fa-robot" style="font-size: 40px; color: var(--secondary);"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <div class="chart-card">
+                    <h3>Equipment Health Overview</h3>
+                    <canvas id="healthChart"></canvas>
+                </div>
+                <div class="chart-card">
+                    <h3>Failure Probability</h3>
+                    <canvas id="failureChart"></canvas>
+                </div>
+            </div>
+
+            <div class="equipment-list">
+                <h3>Equipment Status</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Equipment ID</th>
+                            <th>Name</th>
+                            <th>Type</th>
+                            <th>Last Maintenance</th>
+                            <th>Health Score</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#EQ-1001</td>
+                            <td>Centrifugal Pump A</td>
+                            <td>Pump</td>
+                            <td>15 days ago</td>
+                            <td>92%</td>
+                            <td><span class="status healthy">Healthy</span></td>
+                            <td><button class="view-btn">View</button></td>
+                        </tr>
+                        <tr>
+                            <td>#EQ-2045</td>
+                            <td>Conveyor Belt B</td>
+                            <td>Conveyor</td>
+                            <td>32 days ago</td>
+                            <td>65%</td>
+                            <td><span class="status warning">Warning</span></td>
+                            <td><button class="view-btn">Schedule</button></td>
+                        </tr>
+                        <tr>
+                            <td>#EQ-3098</td>
+                            <td>HVAC Unit 3</td>
+                            <td>HVAC</td>
+                            <td>45 days ago</td>
+                            <td>41%</td>
+                            <td><span class="status critical">Critical</span></td>
+                            <td><button class="view-btn">Repair Now</button></td>
+                        </tr>
+                        <tr>
+                            <td>#EQ-4022</td>
+                            <td>Generator X</td>
+                            <td>Generator</td>
+                            <td>8 days ago</td>
+                            <td>88%</td>
+                            <td><span class="status healthy">Healthy</span></td>
+                            <td><button class="view-btn">View</button></td>
+                        </tr>
+                        <tr>
+                            <td>#EQ-5076</td>
+                            <td>Compressor Unit</td>
+                            <td>Compressor</td>
+                            <td>60 days ago</td>
+                            <td>53%</td>
+                            <td><span class="status warning">Warning</span></td>
+                            <td><button class="view-btn">Schedule</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="c.js"></script>
+</body>
+</html>
+</body>

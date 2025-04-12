@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Machine Alerts</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 40px;
+      animation: fadeDown 1s ease;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .alert-card {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      padding: 30px;
+      width: 300px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s forwards;
+    }
+
+    .alert-card:nth-child(1) { animation-delay: 0.2s; }
+    .alert-card:nth-child(2) { animation-delay: 0.4s; }
+    .alert-card:nth-child(3) { animation-delay: 0.6s; }
+    .alert-card:nth-child(4) { animation-delay: 0.8s; }
+    .alert-card:nth-child(5) { animation-delay: 1s; }
+
+    .alert-card h3 {
+      margin: 15px 0;
+      font-size: 20px;
+      color: #333;
+    }
+
+    .alert-card p {
+      font-size: 16px;
+      color: #555;
+    }
+
+    .alert-card .alert-value {
+      font-size: 18px;
+      color: #007BFF;
+      margin: 10px 0;
+    }
+
+    .alert-card .alert-button {
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .alert-card .alert-button:hover {
+      background-color: #0056b3;
+      transform: scale(1.05);
+    }
+
+    .alert-card:hover {
+      box-shadow: 0 4px 15px rgba(0, 123, 255, 0.2);
+      transform: scale(1.02);
+      transition: all 0.3s ease;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 400px) {
+      .alert-card {
+        width: 90%;
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Machine Alerts</h1>
+  <div class="container">
+    <div class="alert-card">
+      <h3>Warranty Date</h3>
+      <p class="alert-value">Expires on: <strong>2024-12-31</strong></p>
+      <p>Make sure to renew your warranty before the expiration date.</p>
+      <button class="alert-button">Set Reminder</button>
+    </div>
+    <div class="alert-card">
+      <h3>Maintenance Time</h3>
+      <p class="alert-value">Next Maintenance: <strong>2024-06-15</strong></p>
+      <p>Schedule your maintenance to ensure optimal performance.</p>
+      <button class="alert-button">Schedule Now</button>
+    </div>
+    <div class="alert-card">
+      <h3>Machine Age</h3>
+      <p class="alert-value">Age: <strong>3 Years</strong></p>
+      <p>Monitor the age of the machine for maintenance planning.</p>
+      <button class="alert-button">View Details</button>
+    </div>
+    <div class="alert-card">
+      <h3>Parts Wear Detected</h3>
+      <p class="alert-value">Parts: <strong>Bearings, Seals</strong></p>
+      <p>Wear detected in critical parts. Consider replacement.</p>
+      <button class="alert-button">Order Parts</button>
+    </div>
+    <div class="alert-card">
+      <h3>Overdue Maintenance</h3>
+      <p class="alert-value">Status: <strong>Overdue</strong></p>
+      <p>Maintenance is overdue. Schedule immediately!</p>
+      <button class="alert-button">Schedule Maintenance</button>
+    </div>
+  </div>
+
+</body>
+</html>
