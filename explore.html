@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Predictive Maintenance for Smart Manufacturing</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    :root {
+      --primary: #2c3e50;
+      --secondary: #3498db;
+      --accent: #e74c3c;
+      --light: #ecf0f1;
+      --dark: #2c3e50;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      color: var(--dark);
+      line-height: 1.6;
+      background-color: #f9f9f9;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .header {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 80px 20px;
+      text-align: center;
+      animation: fadeInDown 1s ease-in-out;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      color: var(--primary);
+      margin-top: 40px;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      max-width: 800px;
+      margin: 0 auto 30px;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin: 50px 0;
+    }
+
+    .feature-card {
+      background: white;
+      border-radius: 8px;
+      padding: 30px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .feature-icon {
+      font-size: 2.5rem;
+      color: var(--secondary);
+      margin-bottom: 20px;
+    }
+
+    .cta-section {
+      background: var(--light);
+      padding: 60px 20px;
+      text-align: center;
+      margin-top: 60px;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .learn-more-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px 30px;
+      background-color: var(--secondary);
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      font-size: 18px;
+      margin-top: 20px;
+    }
+
+    .learn-more-btn:hover {
+      background-color: var(--primary);
+      transform: scale(1.05) translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .learn-more-btn i {
+      margin-left: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .learn-more-btn:hover i {
+      transform: translateX(5px);
+    }
+
+    .additional-info {
+      background: white;
+      border-radius: 8px;
+      padding: 0 40px;
+      margin: 0 auto;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      max-width: 900px;
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+      transition: all 0.6s ease-in-out;
+    }
+
+    .additional-info.show {
+      padding: 40px;
+      max-height: 2000px;
+      opacity: 1;
+    }
+
+    .additional-info h2 {
+      color: var(--secondary);
+      margin-top: 0;
+    }
+
+    .benefits-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin: 30px 0;
+    }
+
+    .benefit-item {
+      display: flex;
+      align-items: flex-start;
+      animation: fadeInUp 1s ease;
+    }
+
+    .benefit-icon {
+      color: var(--secondary);
+      font-size: 1.5rem;
+      margin-right: 15px;
+      margin-top: 3px;
+    }
+
+    /* Reveal animation on scroll */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      .features {
+        grid-template-columns: 1fr;
+      }
+
+      .additional-info {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container reveal">
+      <h1>Predictive Maintenance for Smart Manufacturing</h1>
+      <p class="subtitle">
+        A cutting-edge solution that analyzes equipment sensor data in real-time to predict potential failures before they occur, minimizing downtime and improving factory efficiency.
+      </p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="reveal">
+      <h2>Transform Your Manufacturing Operations</h2>
+      <p>
+        Our predictive maintenance system integrates seamlessly with your existing industrial setup, using advanced anomaly detection and predictive forecasting to provide actionable insights. Schedule maintenance precisely when needed and keep your operations running smoothly.
+      </p>
+    </section>
+
+    <section class="reveal">
+      <h2>Key Features</h2>
+      <div class="features">
+        <div class="feature-card reveal">
+          <div class="feature-icon"><i class="fas fa-exclamation-triangle"></i></div>
+          <h3>Anomaly Detection</h3>
+          <p>Advanced algorithms detect unusual patterns in sensor data that may indicate impending equipment failure.</p>
+        </div>
+
+        <div class="feature-card reveal">
+          <div class="feature-icon"><i class="fas fa-brain"></i></div>
+          <h3>Predictive Algorithms</h3>
+          <p>Machine learning models forecast potential failures with high accuracy, giving you time to act.</p>
+        </div>
+
+        <div class="feature-card reveal">
+          <div class="feature-icon"><i class="fas fa-tachometer-alt"></i></div>
+          <h3>Real-Time Monitoring</h3>
+          <p>Live dashboards provide instant visibility into equipment health across your entire operation.</p>
+        </div>
+
+        <div class="feature-card reveal">
+          <div class="feature-icon"><i class="fas fa-calendar-check"></i></div>
+          <h3>Maintenance Scheduling</h3>
+          <p>Automatically generates optimal maintenance schedules based on predicted failure timelines.</p>
+        </div>
+
+        <div class="feature-card reveal">
+          <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+          <h3>Data Visualization</h3>
+          <p>Interactive charts and trend analysis help you understand equipment performance over time.</p>
+        </div>
+
+        <div class="feature-card reveal">
+          <div class="feature-icon"><i class="fas fa-cogs"></i></div>
+          <h3>System Integration</h3>
+          <p>Works with your existing industrial equipment and software systems for seamless implementation.</p>
+        </div>
+      </div>
+    </section>
+
+    <div id="additionalInfo" class="additional-info">
+      <h2>Why Choose Our Predictive Maintenance Solution?</h2>
+      <p>Our system goes beyond basic monitoring to deliver tangible business results:</p>
+      <div class="benefits-list">
+        <div class="benefit-item">
+          <div class="benefit-icon"><i class="fas fa-clock"></i></div>
+          <div>
+            <h3>Reduce Downtime</h3>
+            <p>Cut unplanned outages by up to 50% by addressing issues before they cause failures.</p>
+          </div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon"><i class="fas fa-dollar-sign"></i></div>
+          <div>
+            <h3>Lower Costs</h3>
+            <p>Optimize maintenance schedules to reduce both emergency repairs and unnecessary preventive maintenance.</p>
+          </div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon"><i class="fas fa-chart-pie"></i></div>
+          <div>
+            <h3>Improve Efficiency</h3>
+            <p>Increase overall equipment effectiveness (OEE) by keeping machines running at peak performance.</p>
+          </div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon"><i class="fas fa-shield-alt"></i></div>
+          <div>
+            <h3>Enhance Safety</h3>
+            <p>Prevent catastrophic failures that could endanger workers and damage equipment.</p>
+          </div>
+        </div>
+      </div>
+      <h3>Implementation Process</h3>
+      <ol>
+        <li><strong>Assessment:</strong> We analyze your current equipment and data infrastructure</li>
+        <li><strong>Integration:</strong> Connect with your existing sensors and systems</li>
+        <li><strong>Customization:</strong> Tailor algorithms to your specific equipment profiles</li>
+        <li><strong>Training:</strong> Teach your team to use and interpret the system</li>
+        <li><strong>Ongoing Support:</strong> Continuous monitoring and model refinement</li>
+      </ol>
+    </div>
+  </main>
+
+  <section class="cta-section">
+    <div class="container">
+      <h2>Ready to Revolutionize Your Maintenance Strategy?</h2>
+      <p>Discover how our predictive maintenance solution can reduce downtime, cut costs, and boost your manufacturing efficiency.</p>
+      <button id="learnMoreBtn" class="learn-more-btn">
+        Learn More <i class="fas fa-arrow-right"></i>
+      </button>
+    </div>
+  </section>
+
+  <script>
+    // Scroll reveal
+    function revealOnScroll() {
+      const reveals = document.querySelectorAll('.reveal');
+      reveals.forEach(el => {
+        const windowHeight = window.innerHeight;
+        const revealTop = el.getBoundingClientRect().top;
+        if (revealTop < windowHeight - 100) {
+          el.classList.add('active');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('load', revealOnScroll);
+
+    // Learn More toggle
+    document.getElementById('learnMoreBtn').addEventListener('click', function () {
+      const additionalInfo = document.getElementById('additionalInfo');
+      additionalInfo.classList.toggle('show');
+      this.innerHTML = additionalInfo.classList.contains('show')
+        ? 'Show Less <i class="fas fa-arrow-up"></i>'
+        : 'Learn More <i class="fas fa-arrow-right"></i>';
+      if (additionalInfo.classList.contains('show')) {
+        setTimeout(() => {
+          additionalInfo.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      }
+    });
+  </script>
+</body>
+</html>

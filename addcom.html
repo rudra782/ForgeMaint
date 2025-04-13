@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Company</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #2d3e50, #4a6572);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .form-box {
+      background: #fff;
+      padding: 40px 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      max-width: 450px;
+    }
+
+    .form-box h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #2d3e50;
+    }
+
+    .form-box label {
+      font-weight: 500;
+      display: block;
+      margin-bottom: 5px;
+      color: #444;
+    }
+
+    .form-box input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 18px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+
+    .form-box button {
+      width: 100%;
+      padding: 12px;
+      background-color: #2d3e50;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .form-box button:hover {
+      background-color: #1e2a37;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-box">
+    <h2>Register Company</h2>
+    <form id="companyForm">
+      <label for="company_name">Company Name</label>
+      <input type="text" id="company_name" name="company_name" placeholder="e.g., ForgeMaint Ltd" required>
+
+      <label for="industry_type">Industry Type</label>
+      <input type="text" id="industry_type" name="industry_type" placeholder="e.g., Manufacturing">
+
+      <label for="location">Location</label>
+      <input type="text" id="location" name="location" placeholder="e.g., Chicago, IL">
+
+      <label for="contact_person">Contact Person</label>
+      <input type="text" id="contact_person" name="contact_person" placeholder="e.g., John Doe">
+
+      <label for="contact_email">Email</label>
+      <input type="email" id="contact_email" name="contact_email" placeholder="e.g., john@company.com">
+
+      <button type="submit">Add Company</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById("companyForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const companyName = document.getElementById("company_name").value;
+      const industry = document.getElementById("industry_type").value;
+      const location = document.getElementById("location").value;
+      const contact = document.getElementById("contact_person").value;
+      const email = document.getElementById("contact_email").value;
+
+      const companyData = {
+        name: companyName,
+        industry,
+        location,
+        contact,
+        email
+      };
+
+      localStorage.setItem("newCompany", JSON.stringify(companyData));
+      window.location.href = "machine.html";
+    });
+  </script>
+
+</body>
+</html>

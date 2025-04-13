@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .icon-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .icon {
+            position: relative;
+            cursor: pointer;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+
+        .icon:hover {
+            background-color: #e0e0e0;
+        }
+
+        .help-details {
+            display: none;
+            position: absolute;
+            background: #fff;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+            top: 60px;
+            left: 0;
+        }
+
+        .logout-message {
+            display: none;
+            margin-top: 10px;
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Settings</h1>
+        <div class="icon-container">
+            <div class="icon help-icon" onmouseover="showHelpDetails()" onmouseout="hideHelpDetails()">
+                <span>🆘 Help</span>
+                <div class="help-details" id="helpDetails">
+                    <p>Phone: +1-234-567-890</p>
+                    <p>Email: support@example.com</p>
+                </div>
+            </div>
+            <div class="icon logout-icon" onclick="logout()">
+                <span>🚪 Logout</span>
+                <div class="logout-message" id="logoutMessage"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showHelpDetails() {
+            document.getElementById('helpDetails').style.display = 'block';
+        }
+
+        function hideHelpDetails() {
+            document.getElementById('helpDetails').style.display = 'none';
+        }
+
+        function logout() {
+            const logoutMessage = document.getElementById('logoutMessage');
+            logoutMessage.innerText = 'Logout Successfully';
+            logoutMessage.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
